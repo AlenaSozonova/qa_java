@@ -2,8 +2,13 @@ package com.example;
 
 import java.util.List;
 
-public class Lion {
+public class Lion { //Класс Lion не должен зависеть от класса Feline. Используй принцип инъекции зависимостей.
 
+    private Feline feline;
+
+    public Lion(Feline feline) {
+        this.feline = feline;
+    }
     boolean hasMane;
 
     public Lion(String sex) throws Exception {
@@ -16,7 +21,7 @@ public class Lion {
         }
     }
 
-    Feline feline = new Feline();
+   // Feline feline = new Feline();
 
     public int getKittens() {
         return feline.getKittens();
