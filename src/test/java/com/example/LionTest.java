@@ -14,19 +14,21 @@ import java.util.List;
 
 public class LionTest extends TestCase {
 
+    String sex = "Самец";
+
     @Mock
     Feline feline; // создали мок
 
     @Test
     public void testGetFoodShouldReturnFelineGetFood() throws Exception {
-        Lion lion = new Lion(feline);
+        Lion lion = new Lion(sex, feline);
         Mockito.when(feline.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 
     @Test
-    public void testGetKittensWithoutArgs() {
-        Lion lion = new Lion(feline);
+    public void testGetKittensWithoutArgs() throws Exception {
+        Lion lion = new Lion(sex, feline);
         Mockito.when(feline.getKittens()).thenReturn(1);
         Assert.assertEquals(1, lion.getKittens());
     }
