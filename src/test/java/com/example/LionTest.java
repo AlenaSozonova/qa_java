@@ -32,4 +32,14 @@ public class LionTest extends TestCase {
         Mockito.when(feline.getKittens()).thenReturn(1);
         Assert.assertEquals(1, lion.getKittens());
     }
+
+    @Test
+    public void testException() {
+        try {
+            Lion lion = new Lion("CheckException", feline);
+            Assert.fail();
+        } catch (Exception exception) {
+            assertEquals("Используйте допустимые значения пола животного - самей или самка", exception.getMessage());
+        }
+    }
 }

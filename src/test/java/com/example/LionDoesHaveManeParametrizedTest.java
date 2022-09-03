@@ -5,8 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.sql.SQLOutput;
-
 @RunWith(Parameterized.class)  //  аннотацию для параметризованных тестов
 
 public class LionDoesHaveManeParametrizedTest extends TestCase {
@@ -21,7 +19,6 @@ public class LionDoesHaveManeParametrizedTest extends TestCase {
         return new Object[][] {
                 {"Самец", true},
                 {"Самка", false}, // Заполни массив тестовыми данными и ожидаемым результатом
-                {"CheckException", false}, // Заполни массив тестовыми данными и ожидаемым результатом
         };
     }
     private final String sex;
@@ -29,13 +26,9 @@ public class LionDoesHaveManeParametrizedTest extends TestCase {
     Feline feline = new Feline();
 
         @Test
-        public void LionParametrizedTestDoesHaveMane() {
-            try {
+        public void lionParametrizedTestDoesHaveMane() throws Exception {
                 Lion lion = new Lion(sex, feline);
                 // Сравни полученный и ожидаемый результаты
                 assertEquals(result, lion.doesHaveMane());
-            } catch (Exception exception) {
-                assertEquals("Используйте допустимые значения пола животного - самей или самка", exception.getMessage());
-            }
         }
     }
